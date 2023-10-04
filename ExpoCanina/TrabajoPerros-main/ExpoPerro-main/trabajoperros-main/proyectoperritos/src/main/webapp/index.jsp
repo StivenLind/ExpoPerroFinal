@@ -16,11 +16,11 @@
      <div class="card">
         <div class="card-body" >
 
-   <!-- Formulario para ingresar información sobre un perro -->
+   <!-- Formulario para ingresar informaciÃ³n sobre un perro -->
 
             <form action="SvPerro" method="POST" enctype="multipart/form-data">
 
-   <!-- Título del formulario -->
+   <!-- TÃitulo del formulario -->
                 <div class="container text-center">
                  <legend>Ingresar Perro </legend>
                   </div>
@@ -64,7 +64,7 @@
                         <input type="number" class="form-control" name="edad"  placeholder="Numero" aria-label="Username" aria-describedby="basic-addon1" required="true">
                         </div> 
 
-      <!-- Botón para enviar el formulario -->          
+      <!-- BotÃ³n para enviar el formulario -->          
                  <div class="mb-3">
                          <input type="submit" value="Insertar Perro" class="btn btn-primary">
                    </div>
@@ -88,15 +88,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
+   <!-- Desplegable organizar por -->
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Ordenar por
           </a>
           <ul class="dropdown-menu">
+   <!-- Redirije al index, a la pagina principal -->
             <li><a class="dropdown-item" href="index.jsp?tipo=nombre">Nombre</a></li>
             <li><a class="dropdown-item" href="index.jsp?tipo=edad">edad</a></li>
             <li><a class="dropdown-item" href="index.jsp?tipo=puntos">puntos</a></li>
           </ul>
         </li>
       </ul>
+   <!-- Eliminar perros y llamamos al metodo POST del servlet Eliminar -->
         <form action="EliminarPerroServlet"  method="POST" class="d-flex" role="search">    
         <input class="form-control me-2" type="search"  name="nombreBuscar" placeholder="Ingrese el nombre del perro" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -117,16 +120,20 @@
                     </thead>
                   <tbody>
               <%
-            
+            //array nulo vacio
             ArrayList <perro> misPerros = null;
             //String Tipo= request.getParameter("Tipo");
+            //Parametro de buscar
             String nombreBus= request.getParameter("nombreBuscar");
             String tipo= request.getParameter("tipo");
+            //se lo imprime para verificar que se mande
             System.out.println(tipo);
             ServletContext context=  getServletContext();
+           //si son nulos entonces
             if (nombreBus==null && tipo==null){
-            
+            //se deserializa
             misPerros= exposicionPerro.deserializar( context);}
+            //se lo envia como nulo y se lo implime, luego lo ubica y como parametro context y nombreBuscar
             else if (nombreBus!=null && tipo==null){
             System.out.println(nombreBus);
             misPerros= exposicionPerro.ubicarPerroBuscado(nombreBus, context);}
@@ -139,7 +146,8 @@
             // Pero respetamos la logica de Java
             
              if (misPerros != null && !misPerros.isEmpty()) {
-                System.out.println("Se cargaron " + misPerros.size() + " perros exitosamente añadidos");
+            //Mensaje de verificacion
+                System.out.println("Se cargaron " + misPerros.size() + " perros exitosamente aÃ±adidos");
                 for (perro miperro : misPerros) {
                 
         %>
@@ -166,16 +174,16 @@
            <div class="modal-dialog" role="document">
                <div class="modal-content">
                    <div class="modal-header">
-                       <h5 class="modal-title" id="eliminarModalLabel">Confirmar Eliminaci�n</h5>
+                       <h5 class="modal-title" id="eliminarModalLabel">Confirmar Eliminación</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
                        </button>
                    </div>
                    <div class="modal-body">
-                       �Est�s seguro de que deseas eliminar este perro?
+                       ¿Estás seguro de que deseas eliminar este perro?
                    </div>
                    <div class="modal-footer">
                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button> 
-                       <!-- Agrega aqu� un bot�n para realizar la eliminaci�n -->
+                       <!-- Agrega aquí un botón para realizar la eliminación -->
                        <a href="EliminarPerroServlet?perroName=<%=miperro.getNombre()%>" class="btn btn-danger" id="confirmarEliminacion">Eliminar</a>
                    </div>
                </div>
@@ -209,7 +217,7 @@
                  <div class="modal-body"> 
                   
                      <div id="perro-details"> 
-                         <!-- Aqu� se-->
+                         <!-- Aquí se añade los detalles del perro-->
                 </div>
                  </div> 
                  <div class="modal-footer">
@@ -261,19 +269,19 @@
 <script>
     // funcion para mostrar los datos en la ventana modal
   $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget); // Bot�n que desencaden� el evento
-    var nombre = button.data('nombre'); // Obt�n el nombre del perro
+    var button = $(event.relatedTarget); // Botón que desencadenó el evento
+    var nombre = button.data('nombre'); // Obtén el nombre del perro
 
     // Realiza una solicitud AJAX al servlet para obtener los detalles del perro por su nombre
     $.ajax({
-      url: 'SvPerro?nombre=' + nombre, // Cambia 'id' por el nombre del par�metro que esperas en tu servlet
+      url: 'SvPerro?nombre=' + nombre, // Cambia 'id' por el nombre del parámetro que esperas en tu servlet
       method: 'GET',
       success: function (data) {
         // Actualiza el contenido del modal con los detalles del perro
         $('#perro-details').html(data);
       },
       error: function () {
-        // Maneja errores aqu� si es necesario
+        // Maneja errores aquí si es necesario y se imprime en consola
         console.log('Error al cargar los detalles del perro.');
       }
     });
