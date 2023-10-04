@@ -26,8 +26,9 @@ public class exposicionPerro {
     
     //Array donde se guradan los perros
   public ArrayList <perro> darPerros = new ArrayList<>();
-  
+  //Descerializamos el Array de tipo perro, desde el servlet
    public static ArrayList<perro> deserializar ( ServletContext context){
+       //se inicializa como nulo, ya que esta vacio
         ArrayList <perro> misPerros = null;
         // Obtener la ruta real del archivo de datos
         String dataPath = context.getRealPath("/Data/datosperros.ser");
@@ -72,16 +73,19 @@ public class exposicionPerro {
             oos.close();
             //lo que se imprime en la pantalla si los datos no son nulos 
             System.out.println("los datos de videos guardados exitosamente!!: " + filePath);
+            //se llama la IOException con e
         } catch (IOException e) {
           e.printStackTrace();
+            //mensaje que se imprime si hay algun error a la hora de guardar los datos
             System.out.println("Error al guardar los datos de el video añadido: " + e.getMessage());
         }
         
     }
-    
+    //metodo buscar perro, como parametro nombre, llamamos el array principal y el tipo perro
     public static perro BuscarPerroPorNombre(String nombre, ArrayList<perro> division){
+        //se recorre i, con la posicion del array
         for( perro i : division){
-            
+        //busca el perro y si lo encuenta lo ejecuta si no
             if (i.getNombre().equals(nombre)){
                 
                 return i; // retorna le perro si se encuentra 
@@ -89,25 +93,34 @@ public class exposicionPerro {
         }
         return null; // retorna null si no se encuentra el perro
     }
-    
+    //Metodo eliminar perro como parametro, servlet y el nombre eliminar
     public static void eliminarPerro (ServletContext context, String nombreE){
+        //recorre el array para verificar el perro
         ArrayList <perro> perros = deserializar(context);
+        //variable que lo recorre
         for (int i = 0; i < perros.size(); i++) {
+            //variable p, de tipo perro, que recorre i 
             perro p = perros.get(i);
           if (p.getNombre().equals(nombreE)){
+              //.remove para eliminar al perro seleccionado
               perros.remove(p);
           }  
         }
         guardarDatosPerro(perros, context);
     }
-     
+    //Metodo encontrar perro por nombre 
+    //Array de tipo perro con parametros nombrebusCar y el servlet
     public static  ArrayList<perro> ubicarPerroBuscado(String nombreBus, ServletContext context){
         ArrayList <perro> perros = new ArrayList<>();
+        //Perros1 que se reemplaza el nombre buscado
         ArrayList <perro> perrosl = deserializar(context);
+        //Se deserializa y los recorre
         for( perro i : perrosl ){
-            
+        //los llama y lo busca el nombre 
             if (i.getNombre().equals(nombreBus)){
+                //aparecen todos los datos del perro
                 perro miPerro= new perro(i.getNombre(), i.getRaza(), i.getImagen(), i.getPuntos(),i.getEdad());
+                //se imprime en consola 
                 System.out.println("------------------");
                 System.out.println(miPerro);
                 perros.add(miPerro);
