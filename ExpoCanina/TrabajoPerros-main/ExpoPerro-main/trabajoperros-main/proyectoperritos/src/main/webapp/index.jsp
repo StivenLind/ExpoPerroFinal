@@ -169,7 +169,7 @@
                                     <a href ="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-nombre="<%=miperro.getNombre()%>"><i class ="fa-solid fa-trash"></i>
                                             </a>
 
-        <!<!-- Modal de confirmacion de la accion eliminar  -->
+        <!-- Modal de confirmacion de la accion eliminar  -->
    <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
            <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -252,7 +252,7 @@
                 </div>
              </div> 
          </div> 
-                  <!<!-- cierre del modal  -->
+                  <!-- cierre del modal  -->
      </div>  
     
    
