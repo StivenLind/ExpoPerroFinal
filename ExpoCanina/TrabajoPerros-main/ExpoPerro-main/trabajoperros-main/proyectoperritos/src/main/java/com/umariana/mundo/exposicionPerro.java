@@ -33,20 +33,24 @@ public class exposicionPerro {
         String dataPath = context.getRealPath("/Data/datosperros.ser");
 
             // Repetimos el proceso de carga de datos porque:
-            // Si invocas directamente la pÃ¡gina JSP de listar videos, el request no tiene el atributo que estÃ¡s buscando
-            // Es nulo, de ahÃ­ que te dÃ© ese error. @RubioRic (Stack Overflow en espaÃ±ol)
+            // Si invocas directamente la pagina JSP de listar videos, el request no tiene el atributo que estas buscando
         File archivo = new File(dataPath);
           try {
                 if (archivo.exists()) {
+                    //llamar al dataPath
                     FileInputStream fis = new FileInputStream(dataPath);
+                    //Crea el objeto
                     ObjectInputStream ois = new ObjectInputStream(fis);
+                    //Se conectan entre si 
                     misPerros = (ArrayList<perro>) ois.readObject();
+                    //Cerramos ois con la funcion .close
                     ois.close();
+                    //imprimimos en consola para saber que si se mandan 
                     System.out.println("Datos de perros cargados exitosamente desde: " + dataPath);
                 }
                 } catch (IOException e) {
                     e.printStackTrace();
-                    // Manejar el error aquÃ­, por ejemplo, registrÃ¡ndolo o tomando medidas adecuadas.
+                    // Manejar el error aqui­, por ejemplo, registrandolo o tomando medidas adecuadas.
                 } catch (ClassNotFoundException ex) {
           Logger.getLogger(exposicionPerro.class.getName()).log(Level.SEVERE, null, ex);
       }
