@@ -24,10 +24,11 @@ SvPerro svPerro = new SvPerro();
         // añadido Dentro de un método estático
 perro miPerro = new perro(); // Crea una instancia de perro
 String nombre = miPerro.getNombre(); // Llama a getNombre() en la instancia
-
+//creacion array tipo perro llamando a los perros
 ArrayList <perro> misperros = svPerro.division;
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        //excepciones para cada caso
             throws ServletException, IOException {
             ServletContext context =getServletContext();
             String nombreE=request.getParameter("perroName"); //Llama a nombre de perro
