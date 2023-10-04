@@ -28,6 +28,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+/**
+ *
+ * @author Grupo 7
+ */
+
 //servlet llamado SvPerro
 @MultipartConfig
 @WebServlet(name = "SvPerro", urlPatterns = {"/SvPerro"})
