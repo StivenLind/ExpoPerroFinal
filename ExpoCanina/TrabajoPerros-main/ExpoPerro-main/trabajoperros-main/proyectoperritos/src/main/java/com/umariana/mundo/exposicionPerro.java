@@ -120,35 +120,42 @@ public class exposicionPerro {
             if (i.getNombre().equals(nombreBus)){
                 //aparecen todos los datos del perro
                 perro miPerro= new perro(i.getNombre(), i.getRaza(), i.getImagen(), i.getPuntos(),i.getEdad());
-                //se imprime en consola 
+                //se imprime en consola para verificar si esta bien 
                 System.out.println("------------------");
                 System.out.println(miPerro);
+                //añade el perro en pantalla
                 perros.add(miPerro);
                 
                
             }
         }
+        //retorna tipo perro
        return perros;
         
         
     }
+    //metodo ordenar perro por categoria 
     public static ArrayList<perro> ordenarPerro(String tipo, ServletContext context){
+        //array principal de tipo perro se deserializa
          ArrayList <perro> perros = deserializar(context);
+        //casos para organizar los perros por medio de collectiones no por listas
         switch(tipo){
+                //Organizar por nombre, orden abecedario
             case "nombre":
-//                Collections.sort(perros, Comparator.comparing(perro::getNombre));
+                Collections.sort(perros, Comparator.comparing(perro::getNombre));
                             Collections.sort(perros, (p1, p2) -> p1.getNombre().toLowerCase().compareTo(p2.getNombre().toLowerCase()));
-
+            //Organizar por edad, el mayor.
                 break;
             case "edad":
                  Collections.sort(perros, Collections.reverseOrder(Comparator.comparing(perro::getEdad)));
                 break;
+                //Organizar por puntos, el perro ganador
             case "puntos":
                  Collections.sort(perros, Collections.reverseOrder(Comparator.comparing(perro::getPuntos)));
                 break;
 
         }
-                
+         //Retorna los perros       
        return perros; 
     }
 }
