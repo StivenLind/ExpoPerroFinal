@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EliminarPerroServlet extends HttpServlet {
 SvPerro svPerro = new SvPerro();
-        // Dentro de un método estático
+        // añadido Dentro de un método estático
 perro miPerro = new perro(); // Crea una instancia de perro
 String nombre = miPerro.getNombre(); // Llama a getNombre() en la instancia
 
@@ -30,17 +30,17 @@ ArrayList <perro> misperros = svPerro.division;
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             ServletContext context =getServletContext();
-            String nombreE=request.getParameter("perroName");
-            exposicionPerro.eliminarPerro(context, nombreE);
+            String nombreE=request.getParameter("perroName"); //Llama a nombre de perro
+            exposicionPerro.eliminarPerro(context, nombreE); //elimina el perro por medio del nombreE
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
             
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            System.out.println("Entraaa");
-            String nombreB=request.getParameter("nombreBuscar");
-            System.out.println(nombreB);
-            request.getRequestDispatcher("index.jsp?nombreBuscar="+nombreB).forward(request, response);
+            System.out.println("Entraaa"); //consola para verificar que ingresa a las demas jsp
+            String nombreB=request.getParameter("nombreBuscar");//llamamos al nombre que vamos a buscar
+            System.out.println(nombreB); //nombreB de noombre buscar
+            request.getRequestDispatcher("index.jsp?nombreBuscar="+nombreB).forward(request, response); //se conecta el index jsp con el nombre buscar y se contatena con el nombre que se buscara y se añadira
         }
     
 
