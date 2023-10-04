@@ -21,7 +21,7 @@
             //lo deserialza, y como parametro se llama a context
             misPerros= exposicionPerro.deserializar( context);
  
-            //for para recorrer el perro, 
+            //for para recorrer el perro
         for( perro i : misPerros){
         //if para llamar al nombre y que se reemplace por nombreEd
             if (i.getNombre().equals(nombreEd)){
@@ -40,17 +40,18 @@
      <div class="card">
         <div class="card-body" >
 
-   <!-- Formulario para ingresar informacion sobre un perro -->
+   <!-- Formulario para ingresar informacion sobre un perro llamando al metodo POST desde el servlet SsvPerro -->
 
             <form action="SvPerro" method="POST" enctype="multipart/form-data">
 
-   <!-- Ti­tulo del formulario -->
+   <!-- TiÂ­tulo del formulario principal -->
                 <div class="container text-center">
                  <legend>Editar Perro</legend>
                   </div>
     <!-- Campo para ingresar el nombre del perro -->
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1" >Nombre</span>
+     <!-- Llamado al nombre desde get.Nombre e imprimiendolo con consola-->
                         <input type="text" class="form-control" name="nombre" value="<%out.print(p.getNombre());%>" readonly>
                    </div>
      <!-- Campo para ingresar la raza del perro -->
@@ -97,7 +98,7 @@
 
       <!-- Boton para enviar el formulario -->          
                  <div class="mb-3">
-                     <!-- Boton primario para editar al perro Actual-->
+                     <!-- Boton primario para editar al perro Actual -->
                          <input type="submit" value="Insertar Perro" class="btn btn-primary">
                    </div>
             </form>
