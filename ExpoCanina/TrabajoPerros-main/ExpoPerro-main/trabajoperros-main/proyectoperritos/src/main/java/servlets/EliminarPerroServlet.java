@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sebas
+ * @author Grupo 7
  */
 @WebServlet(urlPatterns = {"/EliminarPerroServlet"})
 
