@@ -30,8 +30,8 @@ public class SvEditar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String var= request.getParameter("nombre");
-        System.out.println("--------->"+var);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        System.out.println("--------->"+var); //se imprime llamando la variable
+        request.getRequestDispatcher("index.jsp").forward(request, response); //redirige index
     }
 
     @Override
