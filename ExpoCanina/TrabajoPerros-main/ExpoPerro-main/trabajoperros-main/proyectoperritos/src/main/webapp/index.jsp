@@ -1,4 +1,4 @@
-<%-- 
+        <%-- 
     Document   : index
     Created on : 20/09/2023, 10:56:10 a. m.
     Author     : Grupo 7
@@ -78,7 +78,7 @@
          
          
         <!-- Tabla para mostrar los datos de los perros -->
-          <table class="table table-bordered">
+          <table class="table table-bordered"           >
               <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
@@ -256,7 +256,7 @@
      </div>  
     
    
-     >
+     
                     
                     
                     
